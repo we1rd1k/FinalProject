@@ -1,4 +1,4 @@
-package ru.innopolis.at.api;
+package ru.innopolis.at.api.models.request;
 
 import lombok.Builder;
 import lombok.Data;

@@ -28,18 +28,15 @@ public class BaseTest {
             log.info("Selenoid Url" + props.selenoidUrl());
             Configuration.remote = props.selenoidUrl();
         }
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability("browserName", "firefox");
-//        capabilities.setCapability("browserVersion", "57.0");
-//        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-//                "enableVNC", true,
-//                "enableVideo", true
-//        ));
-
-//        Configuration.browserCapabilities = capabilities;
-//        Configuration.remote = "http://188.130.155.80:4444/wd/hub";
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browserVersion", "89.0");
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
         Configuration.browser = "chrome";
-//        Configuration.browserVersion = "57.0";
         Configuration.timeout = 10000;
         Configuration.startMaximized = true;
     }
