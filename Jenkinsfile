@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'mvn clean test -Dtest=ru.innopolis.at.runner.TestRunner.class'
+                sh 'mvn clean test'
             }
         }
     }
