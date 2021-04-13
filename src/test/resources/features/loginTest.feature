@@ -1,5 +1,4 @@
 
-
   Feature: Login Test
     Scenario: Successful login
       Given Открываем страницу сайта

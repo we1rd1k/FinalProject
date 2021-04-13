@@ -1,4 +1,3 @@
-#english
 
   Feature: Action with Books Test
     Scenario: Add book to profile

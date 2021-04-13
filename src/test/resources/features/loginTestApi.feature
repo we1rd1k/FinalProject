@@ -1,5 +1,4 @@
 
-  
   Feature: Login Test
     Scenario: Successful login
       Given Пользователь = "Test", Пароль = "Q!w2e3r4t5y6"
