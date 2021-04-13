@@ -8,13 +8,12 @@ import ru.innopolis.at.api.models.response.ProfileBooks;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static ru.innopolis.at.api.Endpoint.*;
 
-public class DeleteBookTest extends BaseApiTest{
+public class DeleteBookTest extends BaseApiTest {
 
     @Test
     void deleteBookTest() {
@@ -31,6 +30,20 @@ public class DeleteBookTest extends BaseApiTest{
                         .statusCode(200)
                         .extract().jsonPath().get("userId").toString();
 
+        given(requestSpecificationWithAuth)
+                .queryParam("UserId", userId)
+                .delete(BOOKS.getEndPoint())
+                .then()
+                .statusCode(204);
+
+        given(requestSpecificationWithAuth)
+                .body(BooksDTO.builder().userId(userId).collectionOfIsbns(isbn).build())
+                .when()
+                .post(BOOKS.getEndPoint())
+                .then()
+                .log()
+                .body().statusCode(201);
+
         ProfileBooks profileBooks =
                 given(requestSpecificationWithAuth)
                         .get(USER.getEndPoint() + userId)
@@ -39,14 +52,14 @@ public class DeleteBookTest extends BaseApiTest{
                         .extract()
                         .as(ProfileBooks.class);
 
-        String deletedItem = profileBooks.getBooks().stream().findFirst().get().getIsbn();
+        String bookForDeletion = profileBooks.getBooks().stream().findFirst().get().getIsbn();
 
         given(requestSpecificationWithAuth)
-                .body(BooksDTO.builder().userId(userId).isbn(deletedItem).build())
+                .body(BooksDTO.builder().userId(userId).isbn(bookForDeletion).build())
                 .when()
                 .post(BOOKS.getEndPoint())
                 .then()
-                .assertThat().body("isbn", equalTo(deletedItem))
+                .assertThat().body("isbn", equalTo(bookForDeletion))
                 .statusCode(204);
 
     }

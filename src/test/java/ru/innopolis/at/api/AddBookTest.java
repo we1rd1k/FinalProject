@@ -17,15 +17,6 @@ public class AddBookTest extends BaseApiTest {
     void addBookTest() {
         List<BooksDTO.CollectionDTO> isbn = new ArrayList<>();
         Collections.addAll(isbn, BooksDTO.CollectionDTO.builder().isbnItems("9781449337711").build());
-        String token = given(requestSpecification)
-                .body(LoginDTO.builder().build())
-                .when()
-                .post(GENERATE.getEndPoint())
-                .then()
-                .log()
-                .body()
-                .statusCode(200).extract().jsonPath().get("token");
-
         String userId =
                 given(requestSpecification)
                         .body(LoginDTO.builder().build())
@@ -37,7 +28,13 @@ public class AddBookTest extends BaseApiTest {
                         .statusCode(200)
                         .extract().jsonPath().get("userId").toString();
 
-        given(requestSpecification).header("Authorization", "Bearer " + token)
+        given(requestSpecificationWithAuth)
+                .queryParam("UserId", userId)
+                .delete(BOOKS.getEndPoint())
+                .then()
+                .statusCode(204);
+
+        given(requestSpecificationWithAuth)
                 .body(BooksDTO.builder().userId(userId).collectionOfIsbns(isbn).build())
                 .when()
                 .post(BOOKS.getEndPoint())

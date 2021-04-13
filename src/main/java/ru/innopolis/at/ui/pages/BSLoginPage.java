@@ -8,11 +8,11 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @Slf4j
-public class BSLoginPage extends BSBasePage{
+public class BSLoginPage extends BSBasePage {
 
     public BSLoginPage isLoginPage() {
         log.info("Проверяем, что находимся на странице авторизации");
@@ -22,7 +22,7 @@ public class BSLoginPage extends BSBasePage{
 
 
     public BSLoginPage login(String userName, String password, Boolean correctCredentials) {
-        log.info("Авторизуемся в систему с userName = {}, password = {}", userName, password);
+        log.info("Авторизуемся в системе с userName = {}, password = {}", userName, password);
         $(By.id("userName")).setValue(userName);
         $(By.id("password")).setValue(password);
         $(By.id("login")).click();
@@ -34,7 +34,8 @@ public class BSLoginPage extends BSBasePage{
 
 
     public BSLoginPage checkErrorMessageAppears() {
-        assertTrue($x("//form//div/p").shouldBe(visible).text().equals("Invalid username or password!"), "Текст сообщения не соответствует ожидаемому");
+        log.info("Проверяем наличие сообщения об ошибке");
+        assertEquals($x("//form//div/p").shouldBe(visible).text(), "Invalid username or password!", "Текст сообщения не соответствует ожидаемому");
         return this;
     }
 

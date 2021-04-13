@@ -6,14 +6,12 @@ import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
 import org.aeonbits.owner.ConfigFactory;
 import ru.innopolis.at.ui.Apps;
-import ru.innopolis.at.ui.BasePage;
 import ru.innopolis.at.ui.Props;
-import ru.innopolis.at.ui.pages.BSBasePage;
 
 import static com.codeborne.selenide.Selenide.*;
 
 @Slf4j
-public class StepdefBasePage {
+public class StepDefBasePage {
 
     Props props = ConfigFactory.create(Props.class);
 

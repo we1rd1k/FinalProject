@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import ru.innopolis.at.ui.pages.BSBasePage;
 
-public class AddBookTest extends BaseTest {
+public class ActionBooksTest extends BaseTest {
 
     private BSBasePage bsBasePage;
 

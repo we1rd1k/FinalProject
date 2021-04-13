@@ -1,18 +1,26 @@
-package ru.innopolis.at.api;
+package ru.innopolis.at.stepdef;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.aeonbits.owner.ConfigFactory;
 import ru.innopolis.at.api.models.request.LoginDTO;
 import ru.innopolis.at.ui.Props;
 
 import static io.restassured.RestAssured.given;
-import static ru.innopolis.at.api.Endpoint.GENERATE;
+import static ru.innopolis.at.api.Endpoint.*;
 
-public class BaseApiTest {
+public class StepDefBaseApi {
+
+    public static LoginDTO loginDTO;
+    public static Response response;
+    public static String userId;
+    public static String sessionToken;
 
     private final Props props = ConfigFactory.create(Props.class);
 
