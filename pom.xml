@@ -27,7 +27,7 @@
         <allure.maven>2.10.0</allure.maven>
         <restassured.version>4.3.3</restassured.version>
         <cucumber.version>6.10.2</cucumber.version>
-        <compiler.version>3.8.1</compiler.version>
+        <compiler.version>3.1</compiler.version>
     </properties>
 
     <dependencies>
