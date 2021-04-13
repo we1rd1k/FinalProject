@@ -15,7 +15,7 @@
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <junit.platform.commons.version>1.7.0</junit.platform.commons.version>
         <junit.platform.version>1.7.0</junit.platform.version>
-        <apache.maven.plugins.version>3.0.0-M5</apache.maven.plugins.version>
+        <apache.maven.plugins.version>2.22.0</apache.maven.plugins.version>
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
         <selenide.version>5.12.2</selenide.version>
         <aeonbits.version>1.0.10</aeonbits.version>
