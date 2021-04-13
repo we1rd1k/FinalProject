@@ -32,10 +32,10 @@ public class StepDefBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
         capabilities.setCapability("browserVersion", "89.0");
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
+        Map<String, Object> value = new java.util.HashMap<>();
+        value.put("enableVNC", true);
+        value.put("enableVideo", true);
+        capabilities.setCapability("selenoid:options", value);
         Configuration.browserCapabilities = capabilities;
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
