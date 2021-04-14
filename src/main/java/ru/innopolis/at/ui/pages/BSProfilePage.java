@@ -22,6 +22,16 @@ public class BSProfilePage extends BSBasePage {
         return this;
     }
 
+    public BSProfilePage deleteAllBooks() {
+        log.info("Удаляем все книги из коллекции");
+        $x("//div[contains(@class, 'text')]//button[text()='Delete All Books']").click();
+        $x("//div[@class = 'modal-footer']/button[text()='OK']").click();
+        if (switchTo().alert().getText().equals("All Books deleted.")) {
+            switchTo().alert().accept();
+        }
+        return this;
+    }
+
     public BSProfilePage deleteBookFromCollection(String bookName) {
         log.info("Удаляем книгу из коллекции");
         $$x("//div[contains(@class, 'profile')]//div[@class='action-buttons']/span/a").findBy(text(bookName)).$x("./ancestor::div[@role='row']//div[@class='action-buttons']/span[@title='Delete']").click();

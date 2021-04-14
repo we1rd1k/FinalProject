@@ -26,7 +26,10 @@ public class ActionBooksTest extends BaseTest {
                 .goToLoginPage()
                 .isLoginPage()
                 .login(login, password, true)
+                .goToProfilePage()
+                .deleteAllBooks()
                 .goToBookStorePage()
+                .isBookStorePage()
                 .openBookDetails();
         String bookName = bsBasePage.getSelectedBookTitle();
         bsBasePage.addBookToCollection()
@@ -45,7 +48,10 @@ public class ActionBooksTest extends BaseTest {
                 .goToLoginPage()
                 .isLoginPage()
                 .login(login, password, true)
+                .goToProfilePage()
+                .deleteAllBooks()
                 .goToBookStorePage()
+                .isBookStorePage()
                 .openBookDetails();
         String bookName = bsBasePage.getSelectedBookTitle();
         bsBasePage.addBookToCollection()

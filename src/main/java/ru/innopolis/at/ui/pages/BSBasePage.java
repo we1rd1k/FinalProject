@@ -1,5 +1,6 @@
 package ru.innopolis.at.ui.pages;
 
+import com.codeborne.selenide.CollectionCondition;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import ru.innopolis.at.ui.BasePage;
@@ -55,7 +56,7 @@ public class BSBasePage extends BasePage {
 
     public BSBasePage openBookDetails() {
         log.info("Открываем страницу с детальной информацией о книге");
-        String title = $$x("//div[@role='row']//div/span/a").stream().findAny().get().text();
+        String title = $$x("//div[@role='row']//div/span/a").shouldBe(CollectionCondition.sizeGreaterThan(0)).stream().findAny().get().text();
         $$x("//div[@role='row']//div/span/a").findBy(text(title)).click();
         assertEquals(getSelectedBookTitle(), title);
         return this;
